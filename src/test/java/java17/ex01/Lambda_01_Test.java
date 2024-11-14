@@ -59,7 +59,7 @@ public class Lambda_01_Test {
         List<Person> personList = Data.buildPersonList(100);
 
         // TODO result ne doit contenir que des personnes dont le prénom est "first_10"
-        List<Person> result = filter(personList, p -> Objects.equals(p.getFirstname(), "first_10"));
+        List<Person> result = filter(personList, p -> p.getFirstname().equals("first_10"));
 
         assert result.size() == 1;
         assert result.get(0).getFirstname().equals("first_10");
@@ -77,7 +77,7 @@ public class Lambda_01_Test {
 
         // TODO result ne doit contenir que les personnes dont l'age est > 49 et dont le hash du mot de passe correspond à la valeur de la variable passwordSha512Hex
         // TODO Pour obtenir le hash d'un mot, utiliser la méthode DigestUtils.sha512Hex(mot)
-        List<Person> result = filter(personList, p -> p.getAge() > 49 && Objects.equals(DigestUtils.sha512Hex(p.getPassword()), passwordSha512Hex));
+        List<Person> result = filter(personList, p -> p.getAge() > 49 && DigestUtils.sha512Hex(p.getPassword()).equals(passwordSha512Hex));
 
         assert result.size() == 6;
         for (Person person : result) {
